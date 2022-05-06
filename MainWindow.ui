@@ -254,7 +254,7 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QCheckBox" name="chk_send_double_byte">
+                      <widget class="QRadioButton" name="radio_send_doublebyte">
                        <property name="toolTip">
                         <string>比如发送单字符'A'，实际发送的是双字符'41'，'A'=0x41</string>
                        </property>
@@ -403,7 +403,7 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <widget class="QTextEdit" name="textEdit_2">
+              <widget class="QTextEdit" name="txt_recv">
                <property name="styleSheet">
                 <string notr="true">border:1px</string>
                </property>
@@ -485,7 +485,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QCheckBox" name="chk_recv_double_byte">
+                        <widget class="QRadioButton" name="radio_recv_doublebyte">
                          <property name="toolTip">
                           <string>比如接收的是双字符'41'，转换成单字符'A', 'A'=0x41</string>
                          </property>
@@ -571,6 +571,13 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_state">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
