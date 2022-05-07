@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'MainWindow.ui',
 # licensing of 'MainWindow.ui' applies.
 #
-# Created: Sat May  7 11:20:44 2022
+# Created: Sat May  7 14:36:24 2022
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -322,6 +322,7 @@ class Ui_MainWindow(object):
         self.btn_send_save.setText(QtWidgets.QApplication.translate("MainWindow", "保存发送数据", None, -1))
         self.chk_autosend.setText(QtWidgets.QApplication.translate("MainWindow", "自动发送", None, -1))
         self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "周期", None, -1))
+        self.txt_send_period.setText(QtWidgets.QApplication.translate("MainWindow", "1000", None, -1))
         self.label_7.setText(QtWidgets.QApplication.translate("MainWindow", "ms", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "接收", None, -1))
         self.radio_recv_text_mode.setText(QtWidgets.QApplication.translate("MainWindow", "文本模式", None, -1))

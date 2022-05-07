@@ -1,12 +1,13 @@
 from MainWindow import Ui_MainWindow
 from PySide2.QtGui import QTextCursor
-from PySide2.QtWidgets import QMainWindow, QApplication
+from PySide2.QtWidgets import QMainWindow, QApplication, QFileDialog
 from PySide2.QtCore import QTimer
 import sys
 from PySide2.QtUiTools import QUiLoader
 import serial
 import serial.tools.list_ports
-from threading import Thread
+import pyperclip
+import os
 
 import logging
 logger = logging.getLogger(__name__)
@@ -136,6 +137,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_send_clear.clicked.connect(self.clear_send_text)
         self.ui.btn_send_file.clicked.connect(self.send_file)
         self.ui.btn_send_data.clicked.connect(self.send_data)
+        self.ui.chk_autosend.stateChanged.connect(self.auto_send_changed)
 
         # 定时器
         # 接收的定时器
@@ -143,20 +145,27 @@ class MainWindow(QMainWindow):
         self.recv_timer = QTimer(self)
         self.recv_timer.timeout.connect(self.serial_recv)
         self.recv_timer.start(100) # 直接启动。
-        
-
-
-
+        # 自动发送的定时器
+        self.auto_send_timer = QTimer(self)
+        self.auto_send_timer.timeout.connect(self.send_data) # 事件是发送吧。      
 
         self.show_state('程序启动完毕')
+    
+    def auto_send_changed(self):
+        if self.ui.chk_autosend.isChecked():
+            self.auto_send_timer.start(int(self.ui.txt_send_period.text()))
+        else:
+            self.auto_send_timer.stop()
+        pass
 
     def close_serial(self):
         # 关闭串口
         if self.serial is not None:
             self.serial.close()
         self.serial_state = False
-        self.serial_recv_state = False
+        self.serial = None
         self.log_info("关闭串口")
+
 
     def open_serial(self):
         # 首先获得参数
@@ -211,17 +220,43 @@ class MainWindow(QMainWindow):
     def clear_recv_text(self):
         self.ui.txt_recv.clear()
     def save_recv_text(self):
-        pass
+        # 保存读取的文件
+        file_path,_ = QFileDialog(self).getSaveFileName(self, '选择文件')
+        with open(file_path, 'w') as f:
+            f.write(self.ui.txt_recv.toPlainText())
+
     def copy_recv_text(self):
+        pyperclip.copy(self.ui.txt_recv.toPlainText())
         pass
 
     # 如下是发送的按钮事件处理
     def clear_send_text(self):
         self.ui.txt_send.clear()
+
     def save_send_text(self):
-        pass
+        # 保存发送的信息。
+        file_path,_ = QFileDialog(self).getSaveFileName(self, '选择文件')
+        with open(file_path, 'w') as f:
+            f.write(self.ui.txt_send.toPlainText())
+
     def send_file(self):
-        pass
+        # 这里是发送一个文件，
+        try:
+            file_path, _ = QFileDialog(self).getOpenFileName(self, '选择文件')
+            if os.path.exists(file_path):
+                if self.serial is not None and  self.serial.isOpen():
+                    # 这里表示实际发送的
+                    with open(file_paht, 'rb') as f:
+                        # 二进制读取
+                        self.serial.write(f.read())
+                    self.log_info("发送文件成功")
+                else:
+                    self.log_error("串口没有打开")
+            else:
+                self.log_error("文件：'{}' 不存在".format(file_apth))
+        except Exception as err:
+            self.log_error("错误：{}".format(err))
+
     def send_data(self):
         # 发送数据
         # 首先判断串口是否打开
