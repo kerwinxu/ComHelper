@@ -162,7 +162,7 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <widget class="QTextEdit" name="txt_send"/>
+              <widget class="QPlainTextEdit" name="txt_send"/>
              </item>
             </layout>
            </item>
@@ -403,11 +403,7 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <widget class="QTextEdit" name="txt_recv">
-               <property name="styleSheet">
-                <string notr="true">border:1px</string>
-               </property>
-              </widget>
+              <widget class="QPlainTextEdit" name="txt_recv"/>
              </item>
              <item>
               <widget class="QFrame" name="frame_5">

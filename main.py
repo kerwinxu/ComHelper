@@ -1,6 +1,7 @@
-from numpy import byte
 from MainWindow import Ui_MainWindow
+from PySide2.QtGui import QTextCursor
 from PySide2.QtWidgets import QMainWindow, QApplication
+from PySide2.QtCore import QTimer
 import sys
 from PySide2.QtUiTools import QUiLoader
 import serial
@@ -103,7 +104,7 @@ class MainWindow(QMainWindow):
     
     def setupUi(self):
         # 设置界面的
-        lst_names = list(serial.tools.list_ports.comports())
+        lst_names = [i.name for i in list(serial.tools.list_ports.comports())]
         self.ui.combo_name.addItems(lst_names) # 串口名，
         self.ui.combo_baudrate.addItems(lst_baudrate)
         self.ui.combo_parity.addItems(list(dict_parity.keys()))
@@ -136,6 +137,15 @@ class MainWindow(QMainWindow):
         self.ui.btn_send_file.clicked.connect(self.send_file)
         self.ui.btn_send_data.clicked.connect(self.send_data)
 
+        # 定时器
+        # 接收的定时器
+        self.recv_buf = bytearray() # 接收数据的缓冲区
+        self.recv_timer = QTimer(self)
+        self.recv_timer.timeout.connect(self.serial_recv)
+        self.recv_timer.start(100) # 直接启动。
+        
+
+
 
 
         self.show_state('程序启动完毕')
@@ -158,18 +168,10 @@ class MainWindow(QMainWindow):
                     baudrate=parm[key_baudrate],
                     bytesize=parm[key_bytesize],
                     parity=parm[key_parity],
-                    stopbits=parm[key_stopbits]
+                    stopbits=parm[key_stopbits],
+                    timeout=0 # 读取超时。
                 )
                 if self.serial.isOpen():
-                    # 这里打开线程
-                    if self.serial_recv_state:
-                        # 如果原先有线程，就关闭。
-                        self.serial_recv_state = False
-                        self.thread_serial_recv.join() # 等待线程结束
-                    self.serial_recv_state = True
-                    self.thread_serial_recv = Thread(target=self.serial_recv)
-                    self.thread_serial_recv.start() # 启动线程
-                    self.serial_state = True
                     self.log_info('成功打开串口')
                 else:
                     self.log_error("串口打开失败")
@@ -179,35 +181,31 @@ class MainWindow(QMainWindow):
             self.log_error("参数失败")
     
     def serial_recv(self):
-        # 线程接收类
-        buf = bytearray() # 一个接收的缓冲区
+        # 线程接收，用定时器启动的。
         try:
-            while self.serial_recv_state:
-                if self.serial.in_waiting:
-                    buf.extend(self.serial.read_all())
-                    # 这里要判断一下怎么显示了。
-                    if self.ui.radio_recv_hex_mode.isChecked():
-                        # 这里表示是十六进制显示
-                        self.ui.txt_recv.append(buf.hex() + ' ')
-                        buf.clear()
-                    elif self.ui.radio_recv_text_mode.isChecked():
-                        # 这里表示是文本显示
-                        # 默认是 utf-8编码
-                        self.ui.txt_recv.append(buf.decode('utf-8'))
-                        buf.clear()
-                    else:
-                        # 这里表示是双字节。这里暂时
-                        _count  = len(buf)
-                        _count_2 = _count // 4 # 每4个
-                        buf2 = buf[0:_count_2*4] # 截取
-                        _s_tmp = buf2.decode('ascii') # 这里先按照ascii，其基本都是数字啊，这个是16进制的字符串。
-                        buf3 = bytearray.fromhex(_s_tmp) # 这个转成了byte
-                        self.ui.txt_recv.append(buf3.decode('utf-8'))
-                        buf = buf[_count_2*4:]
+            if self.serial is not None and  self.serial.in_waiting:
+                self.recv_buf.extend(self.serial.read_all())
+                # 这里要判断一下怎么显示了。
+                if self.ui.radio_recv_hex_mode.isChecked():
+                    # 这里表示是十六进制显示
+                    self.appendPlainText(self.recv_buf.hex(' ') + ' ')
+                    self.recv_buf.clear()
+                elif self.ui.radio_recv_text_mode.isChecked():
+                    # 这里表示是文本显示
+                    # 默认是 utf-8编码
+                    self.appendPlainText(self.recv_buf.decode('utf-8'))
+                    self.recv_buf.clear()
+                else:
+                    # 这里表示是双字节。这里暂时
+                    _count  = len(self.recv_buf)
+                    _count_2 = _count // 4 # 每4个
+                    buf2 = self.recv_buf[0:_count_2*4] # 截取
+                    _s_tmp = buf2.decode('ascii') # 这里先按照ascii，其基本都是数字啊，这个是16进制的字符串。
+                    buf3 = bytearray.fromhex(_s_tmp) # 这个转成了byte
+                    self.appendPlainText(buf3.decode('utf-8'))
+                    self.recv_buf = self.recv_buf[_count_2*4:]
         except Exception as err:
             self.log_error('线程接收错误：{}'.format(err))
-        # 最后要设置这个为None
-        self.thread_serial_recv = None
 
     # 如下接收部分的按钮事件处理
     def clear_recv_text(self):
@@ -227,21 +225,40 @@ class MainWindow(QMainWindow):
     def send_data(self):
         # 发送数据
         # 首先判断串口是否打开
-        if self.serial is not None and self.serial.isOpen():
-            # 这里先判断是否是16进制
-            if self.ui.radio_send_hex_mode.isChecked():
-                # 十六进制
-                self.serial.write(bytearray.fromhex(self.ui.txt_send.currentText()))
-            elif self.ui.radio_send_text_mode.isChecked():
-                # 文本，默认是utf-8编码。
-                self.serial.write(bytearray(self.ui.txt_send.currentText(), 'utf-8'))
+        try:
+            if self.serial is not None and self.serial.isOpen():
+                # 这里先判断是否是16进制
+                if self.ui.radio_send_hex_mode.isChecked():
+                    # 十六进制
+                    self.serial.write(bytearray.fromhex(self.ui.txt_send.toPlainText()))
+                elif self.ui.radio_send_text_mode.isChecked():
+                    # 文本，默认是utf-8编码。
+                    self.serial.write(bytearray(self.ui.txt_send.toPlainText(), 'utf-8'))
+                else:
+                    # 这里表示是双字节
+                    # 这里首先要将文本转成
+                    self.serial.write(
+                        bytearray(self.ui.txt_send.toPlainText(), 'utf-8').hex() # 这样子就转成双字节了
+                    )
+                    pass
             else:
-                # 这里表示是双字节
-                
-                pass
-        else:
-            self.log_error("串口没有打开，发送失败.")
-        pass
+                self.log_error("串口没有打开，发送失败.")
+        except Exception as err:
+            self.log_error("发送错误:{}".format(err))
+
+    def appendPlainText(self, text):
+        # 因为默认的清空下，这个会添加回车，这个解决一下
+        self.ui.txt_recv.moveCursor(QTextCursor.End) # 移动到最后
+        precursor =self.ui.txt_recv.textCursor() # 
+        pos = precursor.position() # 这个位置
+        self.ui.txt_recv.appendPlainText(text) # 追加文本
+        if pos == 0:
+            # 如果是第一行，不需要删除回车
+            return
+        # 定位到前面的回车，并且删除这个回车。
+        precursor.setPosition(pos)
+        self.ui.txt_recv.setTextCursor(precursor)
+        self.ui.txt_recv.textCursor().deleteChar()
 
 
 
@@ -251,3 +268,4 @@ if __name__  == '__main__':
     # mainWindow.ui.show()
     mainWindow.show()
     app.exec_()
+ 

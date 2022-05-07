@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'MainWindow.ui',
 # licensing of 'MainWindow.ui' applies.
 #
-# Created: Fri May  6 22:25:49 2022
+# Created: Sat May  7 11:20:44 2022
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -111,7 +111,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.txt_send = QtWidgets.QTextEdit(self.groupBox_2)
+        self.txt_send = QtWidgets.QPlainTextEdit(self.groupBox_2)
         self.txt_send.setObjectName("txt_send")
         self.verticalLayout_2.addWidget(self.txt_send)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
@@ -215,8 +215,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout()
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.txt_recv = QtWidgets.QTextEdit(self.groupBox)
-        self.txt_recv.setStyleSheet("border:1px")
+        self.txt_recv = QtWidgets.QPlainTextEdit(self.groupBox)
         self.txt_recv.setObjectName("txt_recv")
         self.verticalLayout_4.addWidget(self.txt_recv)
         self.frame_5 = QtWidgets.QFrame(self.groupBox)
