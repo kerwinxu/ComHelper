@@ -139,6 +139,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_send_data.clicked.connect(self.send_data)
         self.ui.chk_autosend.stateChanged.connect(self.auto_send_changed)
 
+        # 默认关闭按钮是灰色的。
+        self.ui.btn_close.setEnabled(False)
+
         # 定时器
         # 接收的定时器
         self.recv_buf = bytearray() # 接收数据的缓冲区
@@ -165,6 +168,8 @@ class MainWindow(QMainWindow):
         self.serial_state = False
         self.serial = None
         self.log_info("关闭串口")
+        self.ui.btn_open.setEnabled(True)
+        self.ui.btn_close.setEnabled(False)
 
 
     def open_serial(self):
@@ -182,6 +187,9 @@ class MainWindow(QMainWindow):
                 )
                 if self.serial.isOpen():
                     self.log_info('成功打开串口')
+                    self.ui.btn_open.setEnabled(False)
+                    self.ui.btn_close.setEnabled(True)
+
                 else:
                     self.log_error("串口打开失败")
             except Exception as err:
