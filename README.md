@@ -24,3 +24,7 @@
      - 发送数据
      - 自动发送
        - 发送间隔 ms
+
+# 编译成exe文件
+
+pyinstaller -F -w main.py --hidden-import PySide2.QtXml
