@@ -1,335 +1,617 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MainWindow.ui',
-# licensing of 'MainWindow.ui' applies.
-#
-# Created: Sat May  7 14:36:24 2022
-#      by: pyside2-uic  running on PySide2 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'MainWindow.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.4
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(813, 514)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(813, 499)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
-        self.frame.setMinimumSize(QtCore.QSize(0, 50))
-        self.frame.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setObjectName("label")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.frame = QFrame(self.centralwidget)
+        self.frame.setObjectName(u"frame")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy1)
+        self.frame.setMinimumSize(QSize(0, 50))
+        self.frame.setMaximumSize(QSize(16777215, 50))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.label = QLabel(self.frame)
+        self.label.setObjectName(u"label")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy2)
+
         self.horizontalLayout_3.addWidget(self.label)
-        self.combo_name = QtWidgets.QComboBox(self.frame)
-        self.combo_name.setObjectName("combo_name")
+
+        self.combo_name = QComboBox(self.frame)
+        self.combo_name.setObjectName(u"combo_name")
+
         self.horizontalLayout_3.addWidget(self.combo_name)
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setObjectName("label_2")
+
+        self.label_2 = QLabel(self.frame)
+        self.label_2.setObjectName(u"label_2")
+        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy2)
+
         self.horizontalLayout_3.addWidget(self.label_2)
-        self.combo_baudrate = QtWidgets.QComboBox(self.frame)
-        self.combo_baudrate.setObjectName("combo_baudrate")
+
+        self.combo_baudrate = QComboBox(self.frame)
+        self.combo_baudrate.setObjectName(u"combo_baudrate")
+
         self.horizontalLayout_3.addWidget(self.combo_baudrate)
-        self.label_3 = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy)
-        self.label_3.setObjectName("label_3")
+
+        self.label_3 = QLabel(self.frame)
+        self.label_3.setObjectName(u"label_3")
+        sizePolicy2.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy2)
+
         self.horizontalLayout_3.addWidget(self.label_3)
-        self.combo_bytesize = QtWidgets.QComboBox(self.frame)
-        self.combo_bytesize.setObjectName("combo_bytesize")
+
+        self.combo_bytesize = QComboBox(self.frame)
+        self.combo_bytesize.setObjectName(u"combo_bytesize")
+
         self.horizontalLayout_3.addWidget(self.combo_bytesize)
-        self.label_4 = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
-        self.label_4.setSizePolicy(sizePolicy)
-        self.label_4.setObjectName("label_4")
+
+        self.label_4 = QLabel(self.frame)
+        self.label_4.setObjectName(u"label_4")
+        sizePolicy2.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
+        self.label_4.setSizePolicy(sizePolicy2)
+
         self.horizontalLayout_3.addWidget(self.label_4)
-        self.combo_parity = QtWidgets.QComboBox(self.frame)
-        self.combo_parity.setObjectName("combo_parity")
+
+        self.combo_parity = QComboBox(self.frame)
+        self.combo_parity.setObjectName(u"combo_parity")
+
         self.horizontalLayout_3.addWidget(self.combo_parity)
-        self.label_5 = QtWidgets.QLabel(self.frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
-        self.label_5.setSizePolicy(sizePolicy)
-        self.label_5.setObjectName("label_5")
+
+        self.label_5 = QLabel(self.frame)
+        self.label_5.setObjectName(u"label_5")
+        sizePolicy2.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
+        self.label_5.setSizePolicy(sizePolicy2)
+
         self.horizontalLayout_3.addWidget(self.label_5)
-        self.combo_stopsize = QtWidgets.QComboBox(self.frame)
-        self.combo_stopsize.setObjectName("combo_stopsize")
+
+        self.combo_stopsize = QComboBox(self.frame)
+        self.combo_stopsize.setObjectName(u"combo_stopsize")
+
         self.horizontalLayout_3.addWidget(self.combo_stopsize)
-        self.btn_open = QtWidgets.QPushButton(self.frame)
-        self.btn_open.setObjectName("btn_open")
+
+        self.btn_open = QPushButton(self.frame)
+        self.btn_open.setObjectName(u"btn_open")
+
         self.horizontalLayout_3.addWidget(self.btn_open)
-        self.btn_close = QtWidgets.QPushButton(self.frame)
-        self.btn_close.setObjectName("btn_close")
+
+        self.btn_close = QPushButton(self.frame)
+        self.btn_close.setObjectName(u"btn_close")
+
         self.horizontalLayout_3.addWidget(self.btn_close)
+
+
         self.horizontalLayout_4.addLayout(self.horizontalLayout_3)
+
+
         self.verticalLayout.addWidget(self.frame)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.groupBox_2)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.txt_send = QtWidgets.QPlainTextEdit(self.groupBox_2)
-        self.txt_send.setObjectName("txt_send")
+
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.tab.sizePolicy().hasHeightForWidth())
+        self.tab.setSizePolicy(sizePolicy3)
+        self.layoutWidget = QWidget(self.tab)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(0, 0, 793, 325))
+        self.horizontalLayout_2 = QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.groupBox_2 = QGroupBox(self.layoutWidget)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.verticalLayout_3 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.txt_send = QPlainTextEdit(self.groupBox_2)
+        self.txt_send.setObjectName(u"txt_send")
+
         self.verticalLayout_2.addWidget(self.txt_send)
+
+
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
-        self.frame_2 = QtWidgets.QFrame(self.groupBox_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
-        self.frame_2.setSizePolicy(sizePolicy)
-        self.frame_2.setMinimumSize(QtCore.QSize(0, 75))
-        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 150))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame_2)
+
+        self.frame_2 = QFrame(self.groupBox_2)
+        self.frame_2.setObjectName(u"frame_2")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
+        self.frame_2.setSizePolicy(sizePolicy4)
+        self.frame_2.setMinimumSize(QSize(0, 75))
+        self.frame_2.setMaximumSize(QSize(16777215, 150))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_2)
         self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setSpacing(5)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.frame_4 = QtWidgets.QFrame(self.frame_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy)
-        self.frame_4.setMinimumSize(QtCore.QSize(100, 0))
-        self.frame_4.setStyleSheet("border-color: rgb(0, 0, 0);")
-        self.frame_4.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_4.setObjectName("frame_4")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.frame_4)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.radio_send_text_mode = QtWidgets.QRadioButton(self.frame_4)
-        self.radio_send_text_mode.setObjectName("radio_send_text_mode")
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.frame_4 = QFrame(self.frame_2)
+        self.frame_4.setObjectName(u"frame_4")
+        sizePolicy2.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy2)
+        self.frame_4.setMinimumSize(QSize(100, 0))
+        self.frame_4.setStyleSheet(u"border-color: rgb(0, 0, 0);")
+        self.frame_4.setFrameShape(QFrame.Box)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_8 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_7 = QVBoxLayout()
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.radio_send_text_mode = QRadioButton(self.frame_4)
+        self.radio_send_text_mode.setObjectName(u"radio_send_text_mode")
+
         self.verticalLayout_7.addWidget(self.radio_send_text_mode)
-        self.radio_send_hex_mode = QtWidgets.QRadioButton(self.frame_4)
-        self.radio_send_hex_mode.setObjectName("radio_send_hex_mode")
+
+        self.radio_send_hex_mode = QRadioButton(self.frame_4)
+        self.radio_send_hex_mode.setObjectName(u"radio_send_hex_mode")
+
         self.verticalLayout_7.addWidget(self.radio_send_hex_mode)
-        self.radio_send_doublebyte = QtWidgets.QRadioButton(self.frame_4)
-        self.radio_send_doublebyte.setObjectName("radio_send_doublebyte")
+
+        self.radio_send_doublebyte = QRadioButton(self.frame_4)
+        self.radio_send_doublebyte.setObjectName(u"radio_send_doublebyte")
+
         self.verticalLayout_7.addWidget(self.radio_send_doublebyte)
+
+
         self.verticalLayout_8.addLayout(self.verticalLayout_7)
+
+
         self.horizontalLayout_6.addWidget(self.frame_4)
-        self.frame_3 = QtWidgets.QFrame(self.frame_2)
-        self.frame_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_3)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+
+        self.frame_3 = QFrame(self.frame_2)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.Box)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.gridLayout_2 = QGridLayout(self.frame_3)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setHorizontalSpacing(0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout = QGridLayout()
+        self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(5, 5, 5, 5)
-        self.gridLayout.setObjectName("gridLayout")
-        self.btn_send_data = QtWidgets.QPushButton(self.frame_3)
-        self.btn_send_data.setObjectName("btn_send_data")
+        self.btn_send_data = QPushButton(self.frame_3)
+        self.btn_send_data.setObjectName(u"btn_send_data")
+
         self.gridLayout.addWidget(self.btn_send_data, 1, 1, 1, 1)
-        self.btn_send_clear = QtWidgets.QPushButton(self.frame_3)
-        self.btn_send_clear.setObjectName("btn_send_clear")
+
+        self.btn_send_clear = QPushButton(self.frame_3)
+        self.btn_send_clear.setObjectName(u"btn_send_clear")
+
         self.gridLayout.addWidget(self.btn_send_clear, 0, 0, 1, 1)
-        self.btn_send_file = QtWidgets.QPushButton(self.frame_3)
-        self.btn_send_file.setObjectName("btn_send_file")
+
+        self.btn_send_file = QPushButton(self.frame_3)
+        self.btn_send_file.setObjectName(u"btn_send_file")
+
         self.gridLayout.addWidget(self.btn_send_file, 1, 0, 1, 1)
-        self.btn_send_save = QtWidgets.QPushButton(self.frame_3)
-        self.btn_send_save.setObjectName("btn_send_save")
+
+        self.btn_send_save = QPushButton(self.frame_3)
+        self.btn_send_save.setObjectName(u"btn_send_save")
+
         self.gridLayout.addWidget(self.btn_send_save, 0, 1, 1, 1)
-        self.chk_autosend = QtWidgets.QCheckBox(self.frame_3)
-        self.chk_autosend.setObjectName("chk_autosend")
+
+        self.chk_autosend = QCheckBox(self.frame_3)
+        self.chk_autosend.setObjectName(u"chk_autosend")
+
         self.gridLayout.addWidget(self.chk_autosend, 2, 0, 1, 1)
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.label_6 = QtWidgets.QLabel(self.frame_3)
-        self.label_6.setObjectName("label_6")
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_6 = QLabel(self.frame_3)
+        self.label_6.setObjectName(u"label_6")
+
         self.horizontalLayout_10.addWidget(self.label_6)
-        self.txt_send_period = QtWidgets.QLineEdit(self.frame_3)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.txt_send_period.sizePolicy().hasHeightForWidth())
-        self.txt_send_period.setSizePolicy(sizePolicy)
-        self.txt_send_period.setMinimumSize(QtCore.QSize(50, 0))
-        self.txt_send_period.setMaximumSize(QtCore.QSize(50, 16777215))
-        self.txt_send_period.setObjectName("txt_send_period")
+
+        self.txt_send_period = QLineEdit(self.frame_3)
+        self.txt_send_period.setObjectName(u"txt_send_period")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.txt_send_period.sizePolicy().hasHeightForWidth())
+        self.txt_send_period.setSizePolicy(sizePolicy5)
+        self.txt_send_period.setMinimumSize(QSize(50, 0))
+        self.txt_send_period.setMaximumSize(QSize(50, 16777215))
+
         self.horizontalLayout_10.addWidget(self.txt_send_period)
-        self.label_7 = QtWidgets.QLabel(self.frame_3)
-        self.label_7.setObjectName("label_7")
+
+        self.label_7 = QLabel(self.frame_3)
+        self.label_7.setObjectName(u"label_7")
+
         self.horizontalLayout_10.addWidget(self.label_7)
+
+
         self.gridLayout.addLayout(self.horizontalLayout_10, 2, 1, 1, 1)
+
+
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
+
+
         self.horizontalLayout_6.addWidget(self.frame_3)
+
+
         self.horizontalLayout_7.addLayout(self.horizontalLayout_6)
+
+
         self.verticalLayout_3.addWidget(self.frame_2)
+
+
         self.horizontalLayout_2.addWidget(self.groupBox_2)
-        self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
-        self.groupBox.setObjectName("groupBox")
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.groupBox)
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.txt_recv = QtWidgets.QPlainTextEdit(self.groupBox)
-        self.txt_recv.setObjectName("txt_recv")
+
+        self.groupBox = QGroupBox(self.layoutWidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.txt_recv = QPlainTextEdit(self.groupBox)
+        self.txt_recv.setObjectName(u"txt_recv")
+
         self.verticalLayout_4.addWidget(self.txt_recv)
-        self.frame_5 = QtWidgets.QFrame(self.groupBox)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_5.sizePolicy().hasHeightForWidth())
-        self.frame_5.setSizePolicy(sizePolicy)
-        self.frame_5.setMinimumSize(QtCore.QSize(0, 75))
-        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.frame_5)
+
+        self.frame_5 = QFrame(self.groupBox)
+        self.frame_5.setObjectName(u"frame_5")
+        sizePolicy4.setHeightForWidth(self.frame_5.sizePolicy().hasHeightForWidth())
+        self.frame_5.setSizePolicy(sizePolicy4)
+        self.frame_5.setMinimumSize(QSize(0, 75))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_5)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.frame_6 = QtWidgets.QFrame(self.frame_5)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
-        self.frame_6.setSizePolicy(sizePolicy)
-        self.frame_6.setMinimumSize(QtCore.QSize(100, 0))
-        self.frame_6.setStyleSheet("border-color: rgb(0, 0, 0);")
-        self.frame_6.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_6.setObjectName("frame_6")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_6)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.radio_recv_text_mode = QtWidgets.QRadioButton(self.frame_6)
-        self.radio_recv_text_mode.setObjectName("radio_recv_text_mode")
+        self.horizontalLayout_8 = QHBoxLayout()
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.frame_6 = QFrame(self.frame_5)
+        self.frame_6.setObjectName(u"frame_6")
+        sizePolicy2.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
+        self.frame_6.setSizePolicy(sizePolicy2)
+        self.frame_6.setMinimumSize(QSize(100, 0))
+        self.frame_6.setStyleSheet(u"border-color: rgb(0, 0, 0);")
+        self.frame_6.setFrameShape(QFrame.Box)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_9 = QVBoxLayout(self.frame_6)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_10 = QVBoxLayout()
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.radio_recv_text_mode = QRadioButton(self.frame_6)
+        self.radio_recv_text_mode.setObjectName(u"radio_recv_text_mode")
+
         self.verticalLayout_10.addWidget(self.radio_recv_text_mode)
-        self.radio_recv_hex_mode = QtWidgets.QRadioButton(self.frame_6)
-        self.radio_recv_hex_mode.setObjectName("radio_recv_hex_mode")
+
+        self.radio_recv_hex_mode = QRadioButton(self.frame_6)
+        self.radio_recv_hex_mode.setObjectName(u"radio_recv_hex_mode")
+
         self.verticalLayout_10.addWidget(self.radio_recv_hex_mode)
-        self.radio_recv_doublebyte = QtWidgets.QRadioButton(self.frame_6)
-        self.radio_recv_doublebyte.setObjectName("radio_recv_doublebyte")
+
+        self.radio_recv_doublebyte = QRadioButton(self.frame_6)
+        self.radio_recv_doublebyte.setObjectName(u"radio_recv_doublebyte")
+
         self.verticalLayout_10.addWidget(self.radio_recv_doublebyte)
+
+
         self.verticalLayout_9.addLayout(self.verticalLayout_10)
+
+
         self.horizontalLayout_8.addWidget(self.frame_6)
-        self.frame_7 = QtWidgets.QFrame(self.frame_5)
-        self.frame_7.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_7.setObjectName("frame_7")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_7)
+
+        self.frame_7 = QFrame(self.frame_5)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.Box)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.gridLayout_4 = QGridLayout(self.frame_7)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.gridLayout_3 = QtWidgets.QGridLayout()
+        self.gridLayout_3 = QGridLayout()
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.gridLayout_3.setContentsMargins(5, 5, 5, 5)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.btn_recv_clear = QtWidgets.QPushButton(self.frame_7)
-        self.btn_recv_clear.setObjectName("btn_recv_clear")
+        self.btn_recv_clear = QPushButton(self.frame_7)
+        self.btn_recv_clear.setObjectName(u"btn_recv_clear")
+
         self.gridLayout_3.addWidget(self.btn_recv_clear, 0, 0, 1, 1)
-        self.btn_recv_save = QtWidgets.QPushButton(self.frame_7)
-        self.btn_recv_save.setObjectName("btn_recv_save")
+
+        self.btn_recv_save = QPushButton(self.frame_7)
+        self.btn_recv_save.setObjectName(u"btn_recv_save")
+
         self.gridLayout_3.addWidget(self.btn_recv_save, 1, 0, 1, 1)
-        self.btn_recv_copy = QtWidgets.QPushButton(self.frame_7)
-        self.btn_recv_copy.setObjectName("btn_recv_copy")
+
+        self.btn_recv_copy = QPushButton(self.frame_7)
+        self.btn_recv_copy.setObjectName(u"btn_recv_copy")
+
         self.gridLayout_3.addWidget(self.btn_recv_copy, 2, 0, 1, 1)
+
+
         self.gridLayout_4.addLayout(self.gridLayout_3, 0, 0, 1, 1)
+
+
         self.horizontalLayout_8.addWidget(self.frame_7)
+
+
         self.horizontalLayout_9.addLayout(self.horizontalLayout_8)
+
+
         self.verticalLayout_4.addWidget(self.frame_5)
+
+
         self.verticalLayout_5.addLayout(self.verticalLayout_4)
+
+
         self.horizontalLayout_2.addWidget(self.groupBox)
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.lbl_state = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_state.setText("")
-        self.lbl_state.setObjectName("lbl_state")
+
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.horizontalLayoutWidget = QWidget(self.tab_2)
+        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
+        self.horizontalLayoutWidget.setGeometry(QRect(0, 0, 791, 331))
+        self.horizontalLayout_5 = QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.groupBox_5 = QGroupBox(self.horizontalLayoutWidget)
+        self.groupBox_5.setObjectName(u"groupBox_5")
+        self.layoutWidget1 = QWidget(self.groupBox_5)
+        self.layoutWidget1.setObjectName(u"layoutWidget1")
+        self.layoutWidget1.setGeometry(QRect(7, 20, 242, 301))
+        self.verticalLayout_6 = QVBoxLayout(self.layoutWidget1)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.label_8 = QLabel(self.layoutWidget1)
+        self.label_8.setObjectName(u"label_8")
+        sizePolicy2.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_11.addWidget(self.label_8)
+
+        self.txt_modbus_read_address = QLineEdit(self.layoutWidget1)
+        self.txt_modbus_read_address.setObjectName(u"txt_modbus_read_address")
+        sizePolicy5.setHeightForWidth(self.txt_modbus_read_address.sizePolicy().hasHeightForWidth())
+        self.txt_modbus_read_address.setSizePolicy(sizePolicy5)
+        self.txt_modbus_read_address.setMaximumSize(QSize(40, 16777215))
+
+        self.horizontalLayout_11.addWidget(self.txt_modbus_read_address)
+
+        self.label_9 = QLabel(self.layoutWidget1)
+        self.label_9.setObjectName(u"label_9")
+        sizePolicy2.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
+        self.label_9.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_11.addWidget(self.label_9)
+
+        self.combo_modbus_read_data_style = QComboBox(self.layoutWidget1)
+        self.combo_modbus_read_data_style.setObjectName(u"combo_modbus_read_data_style")
+
+        self.horizontalLayout_11.addWidget(self.combo_modbus_read_data_style)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_11)
+
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.label_10 = QLabel(self.layoutWidget1)
+        self.label_10.setObjectName(u"label_10")
+
+        self.horizontalLayout_12.addWidget(self.label_10)
+
+        self.txt_modbus_read_data_count = QLineEdit(self.layoutWidget1)
+        self.txt_modbus_read_data_count.setObjectName(u"txt_modbus_read_data_count")
+
+        self.horizontalLayout_12.addWidget(self.txt_modbus_read_data_count)
+
+        self.label_11 = QLabel(self.layoutWidget1)
+        self.label_11.setObjectName(u"label_11")
+        sizePolicy2.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        self.label_11.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_12.addWidget(self.label_11)
+
+        self.combo_modbus_read_byte_sort = QComboBox(self.layoutWidget1)
+        self.combo_modbus_read_byte_sort.setObjectName(u"combo_modbus_read_byte_sort")
+
+        self.horizontalLayout_12.addWidget(self.combo_modbus_read_byte_sort)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_12)
+
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_13.addItem(self.horizontalSpacer)
+
+        self.btn_modbus_read = QPushButton(self.layoutWidget1)
+        self.btn_modbus_read.setObjectName(u"btn_modbus_read")
+
+        self.horizontalLayout_13.addWidget(self.btn_modbus_read)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_13.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_13)
+
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_3)
+
+        self.label_12 = QLabel(self.layoutWidget1)
+        self.label_12.setObjectName(u"label_12")
+        sizePolicy2.setHeightForWidth(self.label_12.sizePolicy().hasHeightForWidth())
+        self.label_12.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_14.addWidget(self.label_12)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_14)
+
+        self.txt_modbus_read_send = QLineEdit(self.layoutWidget1)
+        self.txt_modbus_read_send.setObjectName(u"txt_modbus_read_send")
+
+        self.verticalLayout_6.addWidget(self.txt_modbus_read_send)
+
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_15.addItem(self.horizontalSpacer_5)
+
+        self.label_13 = QLabel(self.layoutWidget1)
+        self.label_13.setObjectName(u"label_13")
+        sizePolicy2.setHeightForWidth(self.label_13.sizePolicy().hasHeightForWidth())
+        self.label_13.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_15.addWidget(self.label_13)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_15.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout_6.addLayout(self.horizontalLayout_15)
+
+        self.txt_modbus_read_receive = QTextEdit(self.layoutWidget1)
+        self.txt_modbus_read_receive.setObjectName(u"txt_modbus_read_receive")
+
+        self.verticalLayout_6.addWidget(self.txt_modbus_read_receive)
+
+
+        self.horizontalLayout_5.addWidget(self.groupBox_5)
+
+        self.groupBox_4 = QGroupBox(self.horizontalLayoutWidget)
+        self.groupBox_4.setObjectName(u"groupBox_4")
+
+        self.horizontalLayout_5.addWidget(self.groupBox_4)
+
+        self.groupBox_3 = QGroupBox(self.horizontalLayoutWidget)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+
+        self.horizontalLayout_5.addWidget(self.groupBox_3)
+
+        self.tabWidget.addTab(self.tab_2, "")
+
+        self.verticalLayout.addWidget(self.tabWidget)
+
+        self.lbl_state = QLabel(self.centralwidget)
+        self.lbl_state.setObjectName(u"lbl_state")
+
         self.verticalLayout.addWidget(self.lbl_state)
+
+
         self.horizontalLayout.addLayout(self.verticalLayout)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 813, 23))
-        self.menubar.setObjectName("menubar")
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 813, 23))
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.tabWidget.setCurrentIndex(0)
+
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "ComHelper", None, -1))
-        self.label.setText(QtWidgets.QApplication.translate("MainWindow", "串口名", None, -1))
-        self.label_2.setText(QtWidgets.QApplication.translate("MainWindow", "波特率", None, -1))
-        self.label_3.setText(QtWidgets.QApplication.translate("MainWindow", "字节位", None, -1))
-        self.label_4.setText(QtWidgets.QApplication.translate("MainWindow", "校验", None, -1))
-        self.label_5.setText(QtWidgets.QApplication.translate("MainWindow", "结束位", None, -1))
-        self.btn_open.setText(QtWidgets.QApplication.translate("MainWindow", "打开", None, -1))
-        self.btn_close.setText(QtWidgets.QApplication.translate("MainWindow", "关闭", None, -1))
-        self.groupBox_2.setTitle(QtWidgets.QApplication.translate("MainWindow", "发送", None, -1))
-        self.radio_send_text_mode.setText(QtWidgets.QApplication.translate("MainWindow", "文本模式", None, -1))
-        self.radio_send_hex_mode.setText(QtWidgets.QApplication.translate("MainWindow", "十六进制模式", None, -1))
-        self.radio_send_doublebyte.setToolTip(QtWidgets.QApplication.translate("MainWindow", "比如发送单字符\'A\'，实际发送的是双字符\'41\'，\'A\'=0x41", None, -1))
-        self.radio_send_doublebyte.setText(QtWidgets.QApplication.translate("MainWindow", "双字节", None, -1))
-        self.btn_send_data.setText(QtWidgets.QApplication.translate("MainWindow", "发送数据", None, -1))
-        self.btn_send_clear.setText(QtWidgets.QApplication.translate("MainWindow", "清空发送数据", None, -1))
-        self.btn_send_file.setText(QtWidgets.QApplication.translate("MainWindow", "发送文件", None, -1))
-        self.btn_send_save.setText(QtWidgets.QApplication.translate("MainWindow", "保存发送数据", None, -1))
-        self.chk_autosend.setText(QtWidgets.QApplication.translate("MainWindow", "自动发送", None, -1))
-        self.label_6.setText(QtWidgets.QApplication.translate("MainWindow", "周期", None, -1))
-        self.txt_send_period.setText(QtWidgets.QApplication.translate("MainWindow", "1000", None, -1))
-        self.label_7.setText(QtWidgets.QApplication.translate("MainWindow", "ms", None, -1))
-        self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "接收", None, -1))
-        self.radio_recv_text_mode.setText(QtWidgets.QApplication.translate("MainWindow", "文本模式", None, -1))
-        self.radio_recv_hex_mode.setText(QtWidgets.QApplication.translate("MainWindow", "十六进制模式", None, -1))
-        self.radio_recv_doublebyte.setToolTip(QtWidgets.QApplication.translate("MainWindow", "比如接收的是双字符\'41\'，转换成单字符\'A\', \'A\'=0x41", None, -1))
-        self.radio_recv_doublebyte.setText(QtWidgets.QApplication.translate("MainWindow", "双字节", None, -1))
-        self.btn_recv_clear.setText(QtWidgets.QApplication.translate("MainWindow", "清空接收区", None, -1))
-        self.btn_recv_save.setText(QtWidgets.QApplication.translate("MainWindow", "保存接收数据", None, -1))
-        self.btn_recv_copy.setText(QtWidgets.QApplication.translate("MainWindow", "复制接收数据", None, -1))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"ComHelper", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u4e32\u53e3\u540d", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u6ce2\u7279\u7387", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u5b57\u8282\u4f4d", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u6821\u9a8c", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u7ed3\u675f\u4f4d", None))
+        self.btn_open.setText(QCoreApplication.translate("MainWindow", u"\u6253\u5f00", None))
+        self.btn_close.setText(QCoreApplication.translate("MainWindow", u"\u5173\u95ed", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u53d1\u9001", None))
+        self.radio_send_text_mode.setText(QCoreApplication.translate("MainWindow", u"\u6587\u672c\u6a21\u5f0f", None))
+        self.radio_send_hex_mode.setText(QCoreApplication.translate("MainWindow", u"\u5341\u516d\u8fdb\u5236\u6a21\u5f0f", None))
+#if QT_CONFIG(tooltip)
+        self.radio_send_doublebyte.setToolTip(QCoreApplication.translate("MainWindow", u"\u6bd4\u5982\u53d1\u9001\u5355\u5b57\u7b26'A'\uff0c\u5b9e\u9645\u53d1\u9001\u7684\u662f\u53cc\u5b57\u7b26'41'\uff0c'A'=0x41", None))
+#endif // QT_CONFIG(tooltip)
+        self.radio_send_doublebyte.setText(QCoreApplication.translate("MainWindow", u"\u53cc\u5b57\u8282", None))
+        self.btn_send_data.setText(QCoreApplication.translate("MainWindow", u"\u53d1\u9001\u6570\u636e", None))
+        self.btn_send_clear.setText(QCoreApplication.translate("MainWindow", u"\u6e05\u7a7a\u53d1\u9001\u6570\u636e", None))
+        self.btn_send_file.setText(QCoreApplication.translate("MainWindow", u"\u53d1\u9001\u6587\u4ef6", None))
+        self.btn_send_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u53d1\u9001\u6570\u636e", None))
+        self.chk_autosend.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u53d1\u9001", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u5468\u671f", None))
+        self.txt_send_period.setText(QCoreApplication.translate("MainWindow", u"1000", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"ms", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u63a5\u6536", None))
+        self.radio_recv_text_mode.setText(QCoreApplication.translate("MainWindow", u"\u6587\u672c\u6a21\u5f0f", None))
+        self.radio_recv_hex_mode.setText(QCoreApplication.translate("MainWindow", u"\u5341\u516d\u8fdb\u5236\u6a21\u5f0f", None))
+#if QT_CONFIG(tooltip)
+        self.radio_recv_doublebyte.setToolTip(QCoreApplication.translate("MainWindow", u"\u6bd4\u5982\u63a5\u6536\u7684\u662f\u53cc\u5b57\u7b26'41'\uff0c\u8f6c\u6362\u6210\u5355\u5b57\u7b26'A', 'A'=0x41", None))
+#endif // QT_CONFIG(tooltip)
+        self.radio_recv_doublebyte.setText(QCoreApplication.translate("MainWindow", u"\u53cc\u5b57\u8282", None))
+        self.btn_recv_clear.setText(QCoreApplication.translate("MainWindow", u"\u6e05\u7a7a\u63a5\u6536\u533a", None))
+        self.btn_recv_save.setText(QCoreApplication.translate("MainWindow", u"\u4fdd\u5b58\u63a5\u6536\u6570\u636e", None))
+        self.btn_recv_copy.setText(QCoreApplication.translate("MainWindow", u"\u590d\u5236\u63a5\u6536\u6570\u636e", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u666e\u901a\u4e32\u53e3", None))
+        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"\u8bfb\u53d6", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u5730\u5740:", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u7c7b\u578b:", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u4e2a\u6570:", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u5b57\u8282\u6392\u5e8f:", None))
+        self.btn_modbus_read.setText(QCoreApplication.translate("MainWindow", u"\u8bfb\u53d6", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"\u53d1\u9001\u6570\u636e:", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"\u63a5\u6536\u5230:", None))
+        self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"\u5199\u5165", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u5c0f\u5de5\u5177", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"modbus", None))
+        self.lbl_state.setText("")
+    # retranslateUi
 

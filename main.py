@@ -8,6 +8,8 @@ import serial
 import serial.tools.list_ports
 import pyperclip
 import os
+import datetime
+import time
 
 import logging
 logger = logging.getLogger(__name__)
@@ -45,6 +47,11 @@ dict_stopbits = {
     '2':serial.STOPBITS_TWO
 }
 
+# modbus的数据类型
+modbus_data_style = {
+
+}
+
 
 key_serial_name = "串口名"
 key_baudrate = "波特率"
@@ -52,7 +59,8 @@ key_bytesize = "数据位"
 key_parity = "校验"
 key_stopbits = "停止位"
 
-
+# 接收的定时器的计时器。
+receive_timer_interval = 100
 
 class MainWindow(QMainWindow):
     '''这个是主窗口'''
@@ -144,13 +152,14 @@ class MainWindow(QMainWindow):
 
         # 定时器
         # 接收的定时器
-        self.recv_buf = bytearray() # 接收数据的缓冲区
+        self.recv_buf = bytearray() 
         self.recv_timer = QTimer(self)
         self.recv_timer.timeout.connect(self.serial_recv)
-        self.recv_timer.start(100) # 直接启动。
+        self.recv_timer.start(receive_timer_interval) # 直接启动。
         # 自动发送的定时器
         self.auto_send_timer = QTimer(self)
-        self.auto_send_timer.timeout.connect(self.send_data) # 事件是发送吧。      
+        self.auto_send_timer.timeout.connect(self.send_data) # 事件是发送吧。 
+        self.last_recv_time = None     
 
         self.show_state('程序启动完毕')
     
@@ -201,16 +210,31 @@ class MainWindow(QMainWindow):
         # 线程接收，用定时器启动的。
         try:
             if self.serial is not None and  self.serial.in_waiting:
-                self.recv_buf.extend(self.serial.read_all())
+                newline = False # 默认不换行
+                append_time = False # 默认不需要添加时间。
+                if self.last_recv_time is not None:
+                    # 如果存在最后接收的时间，就判断是否超过了阈值
+                    newline = (datetime.datetime.now() - self.last_recv_time).microseconds > 2 * receive_timer_interval
+                    append_time = newline
+                else:
+                    # 换行得看是否有数据，有可能是发送的数据。
+                    newline=len(self.ui.txt_recv.toPlainText()) > 0
+                    # 需要添加时间。
+                    append_time = True
+                self.last_recv_time = datetime.datetime.now()
+                tmp_buf = bytearray() # 接收的临时的缓冲区。
+                tmp_buf.extend(self.serial.read_all()) # 接收信息。
+                self.recv_buf.extend(tmp_buf)          # 保存到上边的缓冲区。
+                # todo 这里可以保存到modbus的缓冲区。
                 # 这里要判断一下怎么显示了。
                 if self.ui.radio_recv_hex_mode.isChecked():
                     # 这里表示是十六进制显示
-                    self.appendPlainText(self.recv_buf.hex(' ') + ' ')
+                    self.appendPlainText(self.recv_buf.hex(' ') + ' ', newline=newline, append_time=append_time)
                     self.recv_buf.clear()
                 elif self.ui.radio_recv_text_mode.isChecked():
                     # 这里表示是文本显示
                     # 默认是 utf-8编码
-                    self.appendPlainText(self.recv_buf.decode('utf-8'))
+                    self.appendPlainText(self.recv_buf.decode('utf-8'), newline=newline, append_time=append_time)
                     self.recv_buf.clear()
                 else:
                     # 这里表示是双字节。这里暂时
@@ -219,7 +243,7 @@ class MainWindow(QMainWindow):
                     buf2 = self.recv_buf[0:_count_2*4] # 截取
                     _s_tmp = buf2.decode('ascii') # 这里先按照ascii，其基本都是数字啊，这个是16进制的字符串。
                     buf3 = bytearray.fromhex(_s_tmp) # 这个转成了byte
-                    self.appendPlainText(buf3.decode('utf-8'))
+                    self.appendPlainText(buf3.decode('utf-8'), newline=newline, append_time=append_time)
                     self.recv_buf = self.recv_buf[_count_2*4:]
         except Exception as err:
             self.log_error('线程接收错误：{}'.format(err))
@@ -283,18 +307,32 @@ class MainWindow(QMainWindow):
                     self.serial.write(
                         bytearray(self.ui.txt_send.toPlainText(), 'utf-8').hex() # 这样子就转成双字节了
                     )
-                    pass
+                # 这里直接显示发送的信息
+                self.appendPlainText(self.ui.txt_send.toPlainText(), newline=True, append_time=True, is_receive=False)
             else:
                 self.log_error("串口没有打开，发送失败.")
         except Exception as err:
             self.log_error("发送错误:{}".format(err))
 
-    def appendPlainText(self, text):
+    def appendPlainText(self, text, newline=False, append_time = False, is_receive=True):
         # 因为默认的清空下，这个会添加回车，这个解决一下
         self.ui.txt_recv.moveCursor(QTextCursor.End) # 移动到最后
         precursor =self.ui.txt_recv.textCursor() # 
         pos = precursor.position() # 这个位置
-        self.ui.txt_recv.appendPlainText(text) # 追加文本
+        prefix  = "" # 前缀
+        if newline and len(self.ui.txt_recv.toPlainText()) > 0:
+            # 如果不是空白的，就需要添加一个回车
+            prefix += '\n'
+        if append_time:
+            # 如果需要添加时间
+            # 然后添加日期
+            prefix += time.strftime("%H:%M:%S ") # 添加日期
+            # 然后添加是发送还是接收。
+            if is_receive:
+                prefix += '收<- :'
+            else:
+                prefix += '发-> :'
+        self.ui.txt_recv.appendPlainText(prefix + text) # 追加文本
         if pos == 0:
             # 如果是第一行，不需要删除回车
             return
@@ -302,8 +340,7 @@ class MainWindow(QMainWindow):
         precursor.setPosition(pos)
         self.ui.txt_recv.setTextCursor(precursor)
         self.ui.txt_recv.textCursor().deleteChar()
-
-
+    
 
 if __name__  == '__main__':
     app = QApplication(sys.argv)
