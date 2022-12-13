@@ -10,6 +10,7 @@ import pyperclip
 import os
 import datetime
 import time
+from modbus_crc import modbus_crc
 
 import logging
 logger = logging.getLogger(__name__)
@@ -146,6 +147,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_send_file.clicked.connect(self.send_file)
         self.ui.btn_send_data.clicked.connect(self.send_data)
         self.ui.chk_autosend.stateChanged.connect(self.auto_send_changed)
+        #modbus
+        self.ui.btn_calu_crc.clicked.connect(self.calu_crc)
+        
 
         # 默认关闭按钮是灰色的。
         self.ui.btn_close.setEnabled(False)
@@ -163,6 +167,13 @@ class MainWindow(QMainWindow):
 
         self.show_state('程序启动完毕')
     
+    def calu_crc(self):
+        # 这里首先取得输入的值
+        _input = self.ui.txt_crc_input.text()
+        _data = bytearray.fromhex(_input)
+        _crc = modbus_crc(_data)
+        self.ui.txt_crc_result.setText(hex(_crc))
+
     def auto_send_changed(self):
         if self.ui.chk_autosend.isChecked():
             self.auto_send_timer.start(int(self.ui.txt_send_period.text()))
