@@ -3,15 +3,24 @@
 ################################################################################
 ## Form generated from reading UI file 'MainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.4
+## Created by: Qt User Interface Compiler version 6.4.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication,
+    QMetaObject, QRect,
+    QSize)
+# from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+#     QFont, QFontDatabase, QGradient, QIcon,
+#     QImage, QKeySequence, QLinearGradient, QPainter,
+#     QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import ( QCheckBox, QComboBox, QFrame,
+    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
+    QLineEdit,  QMenuBar, QPlainTextEdit,
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QStatusBar, QTabWidget, QTextEdit, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -676,20 +685,19 @@ class Ui_MainWindow(object):
 
         self.groupBox_3 = QGroupBox(self.horizontalLayoutWidget)
         self.groupBox_3.setObjectName(u"groupBox_3")
-        self.verticalLayout_11 = QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.txt_crc_input = QLineEdit(self.groupBox_3)
         self.txt_crc_input.setObjectName(u"txt_crc_input")
-
-        self.verticalLayout_11.addWidget(self.txt_crc_input)
-
-        self.horizontalLayout_16 = QHBoxLayout()
+        self.txt_crc_input.setGeometry(QRect(10, 22, 231, 20))
+        self.widget = QWidget(self.groupBox_3)
+        self.widget.setObjectName(u"widget")
+        self.horizontalLayout_16 = QHBoxLayout(self.widget)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.horizontalSpacer_7 = QSpacerItem(13, 17, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_16.addItem(self.horizontalSpacer_7)
 
-        self.btn_calu_crc = QPushButton(self.groupBox_3)
+        self.btn_calu_crc = QPushButton(self.widget)
         self.btn_calu_crc.setObjectName(u"btn_calu_crc")
 
         self.horizontalLayout_16.addWidget(self.btn_calu_crc)
@@ -698,7 +706,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addItem(self.horizontalSpacer_8)
 
-        self.txt_crc_result = QLineEdit(self.groupBox_3)
+        self.txt_crc_result = QLineEdit(self.widget)
         self.txt_crc_result.setObjectName(u"txt_crc_result")
         sizePolicy5.setHeightForWidth(self.txt_crc_result.sizePolicy().hasHeightForWidth())
         self.txt_crc_result.setSizePolicy(sizePolicy5)
@@ -710,12 +718,34 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addItem(self.horizontalSpacer_9)
 
+        self.widget1 = QWidget(self.groupBox_3)
+        self.widget1.setObjectName(u"widget1")
+        self.widget1.setGeometry(QRect(10, 80, 239, 25))
+        self.horizontalLayout_22 = QHBoxLayout(self.widget1)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.horizontalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.combo_toolbox_data_style = QComboBox(self.widget1)
+        self.combo_toolbox_data_style.setObjectName(u"combo_toolbox_data_style")
 
-        self.verticalLayout_11.addLayout(self.horizontalLayout_16)
+        self.horizontalLayout_22.addWidget(self.combo_toolbox_data_style)
 
-        self.verticalSpacer = QSpacerItem(20, 301, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_16 = QSpacerItem(18, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.verticalLayout_11.addItem(self.verticalSpacer)
+        self.horizontalLayout_22.addItem(self.horizontalSpacer_16)
+
+        self.combo_toolbox_data_sort = QComboBox(self.widget1)
+        self.combo_toolbox_data_sort.setObjectName(u"combo_toolbox_data_sort")
+
+        self.horizontalLayout_22.addWidget(self.combo_toolbox_data_sort)
+
+        self.horizontalSpacer_17 = QSpacerItem(13, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_22.addItem(self.horizontalSpacer_17)
+
+        self.btn_toolbox_convert_data = QPushButton(self.widget1)
+        self.btn_toolbox_convert_data.setObjectName(u"btn_toolbox_convert_data")
+
+        self.horizontalLayout_22.addWidget(self.btn_toolbox_convert_data)
 
 
         self.horizontalLayout_5.addWidget(self.groupBox_3)
@@ -806,6 +836,7 @@ class Ui_MainWindow(object):
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"\u8981\u5199\u5165\u7684\u6570\u636e\uff0c\u884c\u533a\u5206:", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u5c0f\u5de5\u5177", None))
         self.btn_calu_crc.setText(QCoreApplication.translate("MainWindow", u"\u8ba1\u7b97CRC", None))
+        self.btn_toolbox_convert_data.setText(QCoreApplication.translate("MainWindow", u"\u8f6c\u6362", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"modbus", None))
         self.lbl_state.setText("")
     # retranslateUi

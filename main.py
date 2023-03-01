@@ -1,9 +1,9 @@
 from MainWindow import Ui_MainWindow
-from PySide2.QtGui import QTextCursor
-from PySide2.QtWidgets import QMainWindow, QApplication, QFileDialog
-from PySide2.QtCore import QTimer
+from PySide6.QtGui import QTextCursor
+from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
+from PySide6.QtCore import QTimer
 import sys
-from PySide2.QtUiTools import QUiLoader
+from PySide6.QtUiTools import QUiLoader
 import serial
 import serial.tools.list_ports
 import pyperclip
@@ -50,6 +50,7 @@ dict_stopbits = {
 
 # modbus的数据类型
 modbus_data_style = {
+    ''
 
 }
 
@@ -358,5 +359,5 @@ if __name__  == '__main__':
     mainWindow = MainWindow()
     # mainWindow.ui.show()
     mainWindow.show()
-    app.exec_()
+    app.exec()
  
