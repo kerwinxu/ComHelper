@@ -1,7 +1,8 @@
 from MainWindow import Ui_MainWindow
 from PySide6.QtGui import QTextCursor
-from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog
+from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox
 from PySide6.QtCore import QTimer
+from PySide6 import QtCore
 import sys
 from PySide6.QtUiTools import QUiLoader
 import serial
@@ -73,7 +74,8 @@ class MainWindow(QMainWindow):
         # 我用一个脚本来将ui文件转成py文件，然后用如下的方式来初始化。
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setupUi()
+        self.setupUi() # 设置一些参数
+        self.messageBox= QMessageBox()
 
     def getSerialParameter(self)->dict:
         # 这个是取得串口的参数信息
@@ -115,8 +117,7 @@ class MainWindow(QMainWindow):
     
     def setupUi(self):
         # 设置界面的
-        lst_names = [i.name for i in list(serial.tools.list_ports.comports())]
-        self.ui.combo_name.addItems(lst_names) # 串口名，
+        self.updateSerialNames()
         self.ui.combo_baudrate.addItems(lst_baudrate)
         self.ui.combo_parity.addItems(list(dict_parity.keys()))
         self.ui.combo_bytesize.addItems(list(dict_bytesize.keys()))
@@ -136,21 +137,7 @@ class MainWindow(QMainWindow):
         self.serial = None
         self.thread_serial_recv = None
         self.serial_recv_state = False # 线程的状态
-
-        # 如下是一堆的事件处理
         self.serial_state = False # 串口的连接状态
-        self.ui.btn_open.clicked.connect(self.open_serial)
-        self.ui.btn_close.clicked.connect(self.close_serial)
-        self.ui.btn_recv_clear.clicked.connect(self.clear_recv_text)
-        self.ui.btn_recv_copy.clicked.connect(self.copy_recv_text)
-        self.ui.btn_recv_save.clicked.connect(self.save_recv_text)
-        self.ui.btn_send_clear.clicked.connect(self.clear_send_text)
-        self.ui.btn_send_file.clicked.connect(self.send_file)
-        self.ui.btn_send_data.clicked.connect(self.send_data)
-        self.ui.chk_autosend.stateChanged.connect(self.auto_send_changed)
-        #modbus
-        self.ui.btn_calu_crc.clicked.connect(self.calu_crc)
-        
 
         # 默认关闭按钮是灰色的。
         self.ui.btn_close.setEnabled(False)
@@ -163,26 +150,29 @@ class MainWindow(QMainWindow):
         self.recv_timer.start(receive_timer_interval) # 直接启动。
         # 自动发送的定时器
         self.auto_send_timer = QTimer(self)
-        self.auto_send_timer.timeout.connect(self.send_data) # 事件是发送吧。 
+        self.auto_send_timer.timeout.connect(self.serialSend) # 事件是发送吧。 
         self.last_recv_time = None     
 
         self.show_state('程序启动完毕')
     
-    def calu_crc(self):
+    @QtCore.Slot()
+    def caluCrc(self):
         # 这里首先取得输入的值
         _input = self.ui.txt_crc_input.text()
         _data = bytearray.fromhex(_input)
         _crc = modbus_crc(_data)
         self.ui.txt_crc_result.setText(hex(_crc))
 
-    def auto_send_changed(self):
+    @QtCore.Slot()
+    def autoSend(self):
         if self.ui.chk_autosend.isChecked():
             self.auto_send_timer.start(int(self.ui.txt_send_period.text()))
         else:
             self.auto_send_timer.stop()
         pass
 
-    def close_serial(self):
+    @QtCore.Slot()
+    def closeSerial(self):
         # 关闭串口
         if self.serial is not None:
             self.serial.close()
@@ -192,8 +182,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_open.setEnabled(True)
         self.ui.btn_close.setEnabled(False)
 
-
-    def open_serial(self):
+    @QtCore.Slot() #槽函数用它装饰
+    def openSerial(self):
         # 首先获得参数
         parm = self.getSerialParameter()
         if parm != {}:
@@ -261,29 +251,22 @@ class MainWindow(QMainWindow):
             self.log_error('线程接收错误：{}'.format(err))
 
     # 如下接收部分的按钮事件处理
-    def clear_recv_text(self):
-        self.ui.txt_recv.clear()
-    def save_recv_text(self):
+    @QtCore.Slot()
+    def saveReceiveData(self):
         # 保存读取的文件
         file_path,_ = QFileDialog(self).getSaveFileName(self, '选择文件')
         with open(file_path, 'w') as f:
             f.write(self.ui.txt_recv.toPlainText())
 
-    def copy_recv_text(self):
-        pyperclip.copy(self.ui.txt_recv.toPlainText())
-        pass
-
-    # 如下是发送的按钮事件处理
-    def clear_send_text(self):
-        self.ui.txt_send.clear()
-
-    def save_send_text(self):
+    @QtCore.Slot()
+    def saveSendData(self):
         # 保存发送的信息。
         file_path,_ = QFileDialog(self).getSaveFileName(self, '选择文件')
         with open(file_path, 'w') as f:
             f.write(self.ui.txt_send.toPlainText())
 
-    def send_file(self):
+    @QtCore.Slot()
+    def sendFile(self):
         # 这里是发送一个文件，
         try:
             file_path, _ = QFileDialog(self).getOpenFileName(self, '选择文件')
@@ -301,7 +284,8 @@ class MainWindow(QMainWindow):
         except Exception as err:
             self.log_error("错误：{}".format(err))
 
-    def send_data(self):
+    @QtCore.Slot()
+    def serialSend(self):
         # 发送数据
         # 首先判断串口是否打开
         try:
@@ -352,6 +336,23 @@ class MainWindow(QMainWindow):
         precursor.setPosition(pos)
         self.ui.txt_recv.setTextCursor(precursor)
         self.ui.txt_recv.textCursor().deleteChar()
+    
+    @QtCore.Slot()
+    def modbusRead(self):
+        self.messageBox.critical(self, "", "暂时没有实现")
+    
+    @QtCore.Slot()
+    def modbusWrite(self):
+        self.messageBox.critical(self, "", "暂时没有实现")
+
+    @QtCore.Slot()
+    def updateSerialNames(self):
+
+        self.ui.combo_name.clear()
+        lst_names = [i.name for i in list(serial.tools.list_ports.comports())]
+        self.ui.combo_name.addItems(lst_names) # 串口名，
+
+
     
 
 if __name__  == '__main__':
