@@ -1,14 +1,14 @@
 [[source]]
-url = "https://pypi.mirrors.ustc.edu.cn/simple/"
+url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pip_conf_index_global"
+name = "pypi"
 
 [packages]
-pyside6 = "*"
 pyserial = "*"
+pyside6 = "*"
 pyperclip = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
